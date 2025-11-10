@@ -67,3 +67,26 @@ Once all tests are passing and working code is pushed to the GitHub main branch,
 The application passes all test suites.
 * Get json data
 * Convert to Json
+
+---
+
+---
+
+## Developer Notes
+
+This lab implements the `GetRequester` class to retrieve and parse remote JSON data.
+
+### Key Points
+- `get_response_body()` sends a GET request and returns the raw response **as bytes**.
+- `load_json()` converts those bytes into Python data using `json.loads()`.
+- Using `response.content` (not `response.text`) is important because the test compares raw bytes.
+- The endpoint for this lab:
+  https://learn-co-curriculum.github.io/json-site-example/endpoints/people.json
+
+### Example
+
+```python
+from GetRequester import GetRequester
+
+requester = GetRequester("https://learn-co-curriculum.github.io/json-site-example/endpoints/people.json")
+print(requester.load_json())
